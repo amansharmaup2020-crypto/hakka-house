@@ -2,932 +2,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hakka House | Restaurant</title>
-
-<style>
-:root {
-  --orange: #c74725;
-  --dark: #28221f;
-  --cream: #fffaf3;
-  --yellow: #f6c85f;
-  --muted: #6d6962;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: var(--cream);
-  color: #24221f;
-  line-height: 1.6;
-}
-
-.container {
-  width: 90%;
-  max-width: 1150px;
-  margin: auto;
-}
-
-.demo {
-  background: var(--dark);
-  color: white;
-  text-align: center;
-  padding: 8px;
-  font-size: 13px;
-}
-
-header {
-  background: var(--cream);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  border-bottom: 1px solid #eee2d5;
-}
-
-nav {
-  min-height: 75px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
-  color: var(--orange);
-}
-
-nav ul {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-}
-
-nav ul a {
-  text-decoration: none;
-  color: #24221f;
-  font-weight: bold;
-}
-
-nav ul a:hover {
-  color: var(--orange);
-}
-
-.menu-toggle {
-  display: none;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  background: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.hero {
-  padding: 75px 0;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 45px;
-  align-items: center;
-}
-
-.tag {
-  display: inline-block;
-  background: #fbe6dc;
-  color: var(--orange);
-  padding: 7px 14px;
-  border-radius: 25px;
-  font-weight: bold;
-  font-size: 13px;
-}
-
-h1 {
-  font-size: clamp(40px, 6vw, 65px);
-  line-height: 1.1;
-  margin: 20px 0;
-}
-
-h1 span {
-  color: var(--orange);
-}
-
-.hero p,
-.section-intro,
-.about p {
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-
-.hero img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 25px;
-}
-
-.btn {
-  display: inline-block;
-  background: var(--orange);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: #9f3218;
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--orange);
-  border: 2px solid var(--orange);
-  margin-left: 8px;
-}
-
-section {
-  padding: 65px 0;
-  scroll-margin-top: 80px;
-}
-
-.section-title {
-  font-size: clamp(30px, 4vw, 43px);
-  margin-bottom: 10px;
-}
-
-.section-intro {
-  max-width: 650px;
-  margin-bottom: 30px;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.food-card {
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid #eee2d5;
-  box-shadow: 0 5px 20px #00000008;
-}
-
-.food-card img {
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-}
-
-.food-info {
-  padding: 20px;
-}
-
-.food-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.price {
-  color: var(--orange);
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.food-info p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 16px;
-}
-
-.food-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
-.pill {
-  background: #f8efe2;
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.add-btn {
-  background: var(--orange);
-  color: white;
-  border: none;
-  padding: 9px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.offer {
-  background: var(--dark);
-  color: white;
-}
-
-.offer-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
-}
-
-.offer p {
-  color: #ddd0c4;
-}
-
-.offer-code {
-  border: 1px dashed var(--yellow);
-  padding: 20px 30px;
-  text-align: center;
-  border-radius: 15px;
-}
-
-.offer-code strong {
-  display: block;
-  color: var(--yellow);
-  font-size: 32px;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 40px;
-}
-
-.about img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.about ul {
-  list-style: none;
-}
-
-.about li {
-  margin: 10px 0;
-}
-
-.about li::before {
-  content: "✓ ";
-  color: var(--orange);
-  font-weight: bold;
-}
-
-.order-grid {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 25px;
-  align-items: start;
-}
-
-.order-summary,
-.order-form {
-  background: white;
-  padding: 25px;
-  border-radius: 16px;
-  border: 1px solid #eee2d5;
-}
-
-.order-summary {
-  background: #f7e9db;
-}
-
-.order-summary ul {
-  padding-left: 20px;
-  margin-top: 12px;
-}
-
-.total {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 18px;
-  border-top: 1px solid #e1cdb9;
-  padding-top: 15px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.full {
-  grid-column: 1 / -1;
-}
-
-label {
-  font-weight: bold;
-  font-size: 14px;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 11px;
-  border: 1px solid #d9d0c7;
-  border-radius: 8px;
-  font: inherit;
-  background: #fffdfa;
-}
-
-.notice {
-  display: none;
-  background: #e7f6e8;
-  color: #1f5b2a;
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 12px;
-}
-
-.notice.show {
-  display: block;
-}
-
-.reviews {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.review {
-  background: white;
-  padding: 22px;
-  border-radius: 15px;
-  border: 1px solid #eee2d5;
-}
-
-.stars {
-  color: #b77b00;
-}
-
-.review p {
-  margin: 10px 0;
-  color: var(--muted);
-}
-
-.contact {
-  background: var(--yellow);
-  padding: 30px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.contact p {
-  margin-top: 5px;
-}
-
-footer {
-  background: var(--dark);
-  color: white;
-  padding: 25px 0;
-  margin-top: 60px;
-}
-
-.footer-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-footer p {
-  font-size: 14px;
-}
-
-@media (max-width: 850px) {
-  .hero-grid,
-  .about-grid,
-  .order-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .menu-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .reviews {
-    grid-template-columns: 1fr;
-  }
-
-  .hero img {
-    height: 350px;
-  }
-}
-
-@media (max-width: 600px) {
-  nav {
-    flex-wrap: wrap;
-    padding: 15px 0;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  nav ul {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 15px;
-    padding: 10px 0;
-  }
-
-  nav ul.open {
-    display: flex;
-  }
-
-  .menu-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-box,
-  .contact {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .full {
-    grid-column: auto;
-  }
-
-  .hero {
-    padding: 45px 0;
-  }
-
-  .hero img {
-    height: 280px;
-  }
-
-  .btn-outline {
-    margin: 10px 0 0;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakka House | Asian Street Food</title>
+  <meta name="description" content="Discover delicious noodles, momos and Indo-Chinese favourites at Hakka House.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #101010;
+      color: #fff;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 8%; background: #151515; border-bottom: 1px solid #292929;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .logo { font-size: 25px; font-weight: 800; color: #ff4b35; }
+    nav { display: flex; gap: 24px; }
+    nav a:hover { color: #ff634e; }
+    .hero {
+      min-height: 570px; padding: 80px 8%; display: flex; align-items: center;
+      background: linear-gradient(90deg, #101010 10%, rgba(16,16,16,.88) 48%, rgba(16,16,16,.25)),
+      url("https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1600&q=85") center/cover;
+    }
+    .hero-content { max-width: 610px; }
+    .eyebrow { color: #ff634e; text-transform: uppercase; letter-spacing: 3px; font-size: 13px; font-weight: bold; }
+    h1 { font-size: clamp(42px, 6vw, 76px); line-height: 1.08; margin: 18px 0; }
+    h1 span { color: #ff4b35; }
+    .hero p { color: #ddd; max-width: 480px; margin-bottom: 28px; }
+    .btn {
+      display: inline-block; padding: 13px 23px; border-radius: 6px;
+      font-weight: bold; background: #ff4b35; color: white; border: 0;
+      cursor: pointer; transition: .2s;
+    }
+    .btn:hover { background: #e63824; transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 1px solid #777; margin-left: 10px; }
+    section { padding: 75px 8%; }
+    .section-heading { text-align: center; margin-bottom: 35px; }
+    .section-heading h2 { font-size: 36px; margin-bottom: 8px; }
+    .section-heading p { color: #aaa; }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .food-card { background: #1b1b1b; border: 1px solid #303030; border-radius: 12px; overflow: hidden; }
+    .food-card img { width: 100%; height: 210px; object-fit: cover; display: block; }
+    .food-info { padding: 20px; }
+    .food-info h3 { font-size: 20px; margin-bottom: 5px; }
+    .food-info p { color: #aaa; font-size: 14px; min-height: 45px; }
+    .food-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; gap: 8px; }
+    .price { color: #ff634e; font-size: 20px; font-weight: bold; }
+    .small-btn { padding: 9px 13px; font-size: 13px; }
+    .about { background: #191919; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .about img { width: 100%; max-height: 370px; object-fit: cover; border-radius: 12px; }
+    .about h2 { font-size: 36px; margin: 10px 0 15px; }
+    .about p { color: #bbb; margin-bottom: 15px; }
+    .contact { text-align: center; }
+    .contact p { color: #bbb; margin: 10px 0 25px; }
+    footer { text-align: center; padding: 25px 8%; background: #080808; color: #888; font-size: 14px; }
+    @media (max-width: 800px) {
+      header { padding: 16px 5%; flex-wrap: wrap; gap: 12px; }
+      nav { gap: 14px; flex-wrap: wrap; font-size: 14px; }
+      .hero { padding: 70px 6%; min-height: 500px; }
+      section { padding: 55px 6%; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .about { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .menu-grid { grid-template-columns: 1fr; }
+      .food-card img { height: 230px; }
+      .section-heading h2, .about h2 { font-size: 29px; }
+      .btn-outline { margin: 10px 0 0; }
+      header { justify-content: center; }
+      nav { justify-content: center; }
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <a class="logo" href="#home">🥢 HAKKA HOUSE</a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<div class="demo">
-  Student Portfolio Project · Sample restaurant website
-</div>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">Big flavours. Fresh ingredients.</div>
+        <h1>Your favourite <span>Asian</span> street food.</h1>
+        <p>From sizzling noodles to flavour-packed momos, discover your next favourite bite at Hakka House.</p>
+        <a class="btn" href="#menu">Explore Our Menu</a>
+        <a class="btn btn-outline" href="#contact">Contact Us</a>
+      </div>
+    </section>
 
-<header>
-  <nav class="container">
-    <a href="#home" class="logo">🍜 Hakka House</a>
-
-    <button class="menu-toggle" id="menuToggle"
-      aria-expanded="false" aria-controls="navLinks">
-      ☰ Menu
-    </button>
-
-    <ul id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#menu">Our Menu</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#order">Order Demo</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div>
-      <span class="tag">FRESH · HOT · DELICIOUS</span>
-      <h1>Good food.<br>Great mood.<br><span>Every time.</span></h1>
-
-      <p>
-        Discover delicious noodles, flavour-packed meals, and
-        your favourite comfort food at Hakka House.
-      </p>
-
-      <a href="#menu" class="btn">Explore Menu</a>
-      <a href="#about" class="btn btn-outline">Our Story</a>
-    </div>
-
-    <img
-      src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=85"
-      alt="A delicious bowl of noodles">
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="menu-grid">
-      <div class="food-card">
-        <div class="food-info">
-          <h3>🥬 Fresh Ingredients</h3>
-          <p>Sample feature: colourful ingredients and delicious flavours.</p>
-        </div>
+    <section id="menu">
+      <div class="section-heading">
+        <div class="eyebrow">Made fresh, served hot</div>
+        <h2>Our Popular Menu</h2>
+        <p>Cravings don't wait. Find your favourite.</p>
       </div>
 
-      <div class="food-card">
-        <div class="food-info">
-          <h3>🍳 Made Fresh</h3>
-          <p>Sample feature: meals prepared fresh for every customer.</p>
-        </div>
-      </div>
-
-      <div class="food-card">
-        <div class="food-info">
-          <h3>❤️ Made with Care</h3>
-          <p>Sample feature: a friendly dining experience for everyone.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="menu">
-  <div class="container">
-    <h2 class="section-title">Our Popular Menu</h2>
-    <p class="section-intro">
-      Explore our sample dishes. Prices and menu details are
-      examples for this student project.
-    </p>
-
-    <div class="menu-grid">
-
-      <article class="food-card">
-        <img
-          src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=80"
-          alt="Hakka noodles" loading="lazy">
-        <div class="food-info">
-          <div class="food-top">
+      <div class="menu-grid">
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80" alt="A bowl of noodles" loading="lazy">
+          <div class="food-info">
             <h3>Hakka Noodles</h3>
-            <span class="price">₹149</span>
+            <p>Wok-tossed noodles with crunchy vegetables and bold flavours.</p>
+            <div class="food-bottom"><span class="price">₹149</span><button class="btn small-btn" onclick="order('Hakka Noodles')">Order</button></div>
           </div>
-          <p>Stir-fried noodles with vegetables and savoury sauces.</p>
-          <div class="food-bottom">
-            <span class="pill">Vegetarian</span>
-            <button class="add-btn" data-item="Hakka Noodles" data-price="149">Add +</button>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80" alt="Steamed dumplings" loading="lazy">
+          <div class="food-info">
+            <h3>Steamed Momos</h3>
+            <p>Soft, juicy dumplings served with a spicy dipping sauce.</p>
+            <div class="food-bottom"><span class="price">₹119</span><button class="btn small-btn" onclick="order('Steamed Momos')">Order</button></div>
           </div>
-        </div>
-      </article>
-
-      <article class="food-card">
-        <img
-          src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=900&q=80"
-          alt="Fried rice" loading="lazy">
-        <div class="food-info">
-          <div class="food-top">
-            <h3>Fried Rice</h3>
-            <span class="price">₹129</span>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80" alt="Asian stir-fried rice" loading="lazy">
+          <div class="food-info">
+            <h3>Veg Fried Rice</h3>
+            <p>Fragrant rice stir-fried with vegetables and savoury seasoning.</p>
+            <div class="food-bottom"><span class="price">₹139</span><button class="btn small-btn" onclick="order('Veg Fried Rice')">Order</button></div>
           </div>
-          <p>Flavourful rice tossed with vegetables and spices.</p>
-          <div class="food-bottom">
-            <span class="pill">Vegetarian</span>
-            <button class="add-btn" data-item="Fried Rice" data-price="129">Add +</button>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=800&q=80" alt="Asian stir-fry dish" loading="lazy">
+          <div class="food-info">
+            <h3>Chilli Paneer</h3>
+            <p>Paneer tossed with peppers in a spicy Indo-Chinese sauce.</p>
+            <div class="food-bottom"><span class="price">₹189</span><button class="btn small-btn" onclick="order('Chilli Paneer')">Order</button></div>
           </div>
-        </div>
-      </article>
-
-      <article class="food-card">
-        <img
-          src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80"
-          alt="Crispy starter" loading="lazy">
-        <div class="food-info">
-          <div class="food-top">
-            <h3>Crispy Starter</h3>
-            <span class="price">₹119</span>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Crispy appetiser" loading="lazy">
+          <div class="food-info">
+            <h3>Crispy Starters</h3>
+            <p>Crunchy, flavourful bites for sharing with friends.</p>
+            <div class="food-bottom"><span class="price">₹159</span><button class="btn small-btn" onclick="order('Crispy Starters')">Order</button></div>
           </div>
-          <p>A crunchy starter to begin your meal.</p>
-          <div class="food-bottom">
-            <span class="pill">Starter</span>
-            <button class="add-btn" data-item="Crispy Starter" data-price="119">Add +</button>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=800&q=80" alt="Crispy chicken pieces" loading="lazy">
+          <div class="food-info">
+            <h3>Chilli Chicken</h3>
+            <p>A classic spicy favourite with a delicious savoury glaze.</p>
+            <div class="food-bottom"><span class="price">₹219</span><button class="btn small-btn" onclick="order('Chilli Chicken')">Order</button></div>
           </div>
-        </div>
-      </article>
-
-      <article class="food-card">
-        <img
-          src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=900&q=80"
-          alt="Spicy curry" loading="lazy">
-        <div class="food-info">
-          <div class="food-top">
-            <h3>Spicy Curry</h3>
-            <span class="price">₹179</span>
-          </div>
-          <p>A rich, spicy curry served as a sample main course.</p>
-          <div class="food-bottom">
-            <span class="pill">Main course</span>
-            <button class="add-btn" data-item="Spicy Curry" data-price="179">Add +</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="food-card">
-        <img
-          src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=900&q=80"
-          alt="Paneer curry" loading="lazy">
-        <div class="food-info">
-          <div class="food-top">
-            <h3>Shahi Paneer</h3>
-            <span class="price">₹199</span>
-          </div>
-          <p>Paneer in a creamy tomato sauce with warm spices.</p>
-          <div class="food-bottom">
-            <span class="pill">Vegetarian</span>
-            <button class="add-btn" data-item="Shahi Paneer" data-price="199">Add +</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="food-card">
-        <img
-          src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80"
-          alt="Chef special dish" loading="lazy">
-        <div class="food-info">
-          <div class="food-top">
-            <h3>Chef's Special</h3>
-            <span class="price">₹249</span>
-          </div>
-          <p>A special dish you can rename for your restaurant project.</p>
-          <div class="food-bottom">
-            <span class="pill">Special</span>
-            <button class="add-btn" data-item="Chef's Special" data-price="249">Add +</button>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section class="offer">
-  <div class="container offer-box">
-    <div>
-      <h2 class="section-title">A little something extra!</h2>
-      <p>Sample offer for this demo website.</p>
-    </div>
-    <div class="offer-code">
-      <span>DEMO OFFER</span>
-      <strong>₹50 OFF</strong>
-      <span>On sample orders above ₹499</span>
-    </div>
-  </div>
-</section>
-
-<section class="about" id="about">
-  <div class="container about-grid">
-    <img
-      src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80"
-      alt="Restaurant interior" loading="lazy">
-
-    <div>
-      <h2 class="section-title">Welcome to Hakka House</h2>
-      <p>
-        Our concept is simple: good food, clear menus, and a
-        welcoming experience. This section is sample content
-        for your restaurant website project.
-      </p>
-      <ul>
-        <li>Easy-to-read menu and prices</li>
-        <li>Responsive design for phones and laptops</li>
-        <li>Interactive sample ordering system</li>
-        <li>Simple and attractive layout</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="order">
-  <div class="container">
-    <h2 class="section-title">Your Order</h2>
-    <p class="section-intro">
-      Add menu items, then preview your sample order.
-      This form does not send orders to a restaurant.
-    </p>
-
-    <div class="order-grid">
-      <div class="order-summary">
-        <h3>Selected Items</h3>
-        <div id="orderItems">No items selected yet.</div>
-        <div class="total">
-          <span>Total</span>
-          <span id="orderTotal">₹0</span>
-        </div>
-        <p style="font-size:13px;margin-top:12px">
-          Sample prices only. No payment is collected.
-        </p>
+        </article>
       </div>
+      <p style="text-align:center;color:#888;font-size:13px;margin-top:20px">Demo menu and prices — customise them for the real restaurant.</p>
+    </section>
 
-      <form class="order-form" id="orderForm">
-        <div class="form-grid">
-          <div class="field">
-            <label for="customerName">Name</label>
-            <input id="customerName" type="text"
-              placeholder="Your name" required>
-          </div>
-
-          <div class="field">
-            <label for="customerPhone">Mobile number</label>
-            <input id="customerPhone" type="tel"
-              placeholder="Sample number only" required>
-          </div>
-
-          <div class="field">
-            <label for="preference">Food preference</label>
-            <select id="preference" required>
-              <option value="">Choose one</option>
-              <option>Vegetarian</option>
-              <option>Non-vegetarian</option>
-              <option>Egg</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="spice">Spice level</label>
-            <select id="spice">
-              <option>Mild</option>
-              <option selected>Medium</option>
-              <option>Hot</option>
-            </select>
-          </div>
-
-          <div class="field full">
-            <button class="btn" type="submit">Preview Order</button>
-          </div>
-
-          <div class="field full">
-            <div class="notice" id="notice" role="status"></div>
-          </div>
-        </div>
-
-        <p style="font-size:12px;color:#6d6962;margin-top:15px">
-          Demo only. Do not enter real personal or payment details.
-        </p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <h2 class="section-title">Customer Reviews</h2>
-    <p class="section-intro">
-      Example reviews for layout demonstration. Replace these
-      with genuine reviews only when you have permission.
-    </p>
-
-    <div class="reviews">
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>"The menu is simple and easy to explore."</p>
-        <strong>— Sample customer</strong>
+    <section class="about" id="about">
+      <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=80" alt="Restaurant dining space" loading="lazy">
+      <div>
+        <div class="eyebrow">Welcome to Hakka House</div>
+        <h2>Good food. Great company.</h2>
+        <p>We bring the excitement of Asian street food to your table, with bold flavours and satisfying favourites made for sharing.</p>
+        <p>Come hungry, bring your friends, and make every meal a little more memorable.</p>
+        <a class="btn" href="#menu">Find Your Favourite</a>
       </div>
+    </section>
 
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>"A clean design with delicious-looking food."</p>
-        <strong>— Sample customer</strong>
-      </div>
+    <section class="contact" id="contact">
+      <div class="eyebrow">Let's make you something delicious</div>
+      <h2>Ready to order?</h2>
+      <p>Contact us to ask about our menu and ordering options.</p>
+      <a class="btn" href="#menu">Browse the Menu</a>
+    </section>
+  </main>
 
-      <div class="review">
-        <div class="stars">★★★★☆</div>
-        <p>"Works nicely on my phone."</p>
-        <strong>— Sample customer</strong>
-      </div>
-    </div>
-  </div>
-</section>
+  <footer>
+    <p>© 2026 Hakka House. Demo website created for a portfolio project.</p>
+  </footer>
 
-<section>
-  <div class="container contact">
-    <div>
-      <h2>Hungry? Explore our menu!</h2>
-      <p>Discover your next favourite dish at Hakka House.</p>
-    </div>
-    <a href="#menu" class="btn">View Menu</a>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer-row">
-    <p>© <span id="year"></span> Hakka House · Student Project</p>
-    <p>Built using HTML, CSS and JavaScript.</p>
-  </div>
-</footer>
-
-<script>
-// Mobile navigation
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-menuToggle.addEventListener("click", function () {
-  const open = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", open);
-});
-
-// Shopping cart for the demo
-const selectedItems = [];
-const orderItems = document.getElementById("orderItems");
-const orderTotal = document.getElementById("orderTotal");
-
-function updateOrder() {
-  if (selectedItems.length === 0) {
-    orderItems.textContent = "No items selected yet.";
-    orderTotal.textContent = "₹0";
-    return;
-  }
-
-  const list = document.createElement("ul");
-  let total = 0;
-
-  selectedItems.forEach(function (item) {
-    const li = document.createElement("li");
-    li.textContent = item.name + " — ₹" + item.price;
-    list.appendChild(li);
-    total += item.price;
-  });
-
-  orderItems.replaceChildren(list);
-  orderTotal.textContent = "₹" + total;
-}
-
-// Add food items to the cart
-document.querySelectorAll(".add-btn").forEach(function (button) {
-  button.addEventListener("click", function () {
-    selectedItems.push({
-      name: button.dataset.item,
-      price: Number(button.dataset.price)
-    });
-
-    updateOrder();
-  });
-});
-
-// Demo order form: nothing is sent or saved
-const form = document.getElementById("orderForm");
-const notice = document.getElementById("notice");
-
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  if (selectedItems.length === 0) {
-    notice.textContent = "Please add at least one dish first.";
-    notice.classList.add("show");
-    return;
-  }
-
-  const name = document.getElementById("customerName").value.trim();
-
-  notice.textContent =
-    "Demo order preview ready for " + name +
-    "! Total: " + orderTotal.textContent +
-    ". No order has been sent.";
-  notice.classList.add("show");
-});
-
-// Automatically update footer year
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-</script>
-
+  <script>
+    function order(item) {
+      // Replace this demo alert with a real WhatsApp order link when ready.
+      alert("You selected " + item + "! Contact Hakka House to place your order.");
+    }
+  </script>
 </body>
 </html>
