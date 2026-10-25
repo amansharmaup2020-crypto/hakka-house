@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aman sharma | Web Developer</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1120;
+      color: #f1f5f9;
+      line-height: 1.7;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid #263247;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: #60a5fa;
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 18px;
+    }
+
+    nav a:hover {
+      color: #60a5fa;
+    }
+
+    .hero {
+      padding: 100px 0 80px;
+    }
+
+    .tag {
+      color: #60a5fa;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.15;
+      margin: 18px 0;
+    }
+
+    h1 span {
+      color: #60a5fa;
+    }
+
+    .intro {
+      color: #b6c3d6;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #3b82f6;
+      color: white;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin: 5px 8px 5px 0;
+    }
+
+    .button:hover {
+      background: #2563eb;
+    }
+
+    .button.secondary {
+      background: transparent;
+      border: 1px solid #52627a;
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      color: #a8b5c8;
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #131e31;
+      border: 1px solid #28364c;
+      padding: 24px;
+      border-radius: 14px;
+    }
+
+    .card h3 {
+      color: #93c5fd;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #c0cada;
+    }
+
+    .skills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .skills span {
+      background: #172842;
+      border: 1px solid #30445f;
+      color: #bfdbfe;
+      padding: 8px 13px;
+      border-radius: 7px;
+    }
+
+    .contact {
+      background: #111b2d;
+      padding: 30px;
+      border-radius: 14px;
+    }
+
+    footer {
+      border-top: 1px solid #263247;
+      text-align: center;
+      padding: 24px 0;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin: 0 12px 0 0;
+      }
+
+      .hero {
+        padding: 65px 0 45px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">MyPortfolio.</div>
+
+        <div>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="tag">FIRST-YEAR COLLEGE STUDENT</p>
+
+        <h1>
+          Hi, I'm Your Aman sharma.<br>
+          I build <span>websites.</span>
+        </h1>
+
+        <p class="intro">
+          I'm learning web development and creating clean,
+          responsive websites for students and small businesses.
+          I'm always ready to learn, improve, and take on new projects.
+        </p>
+
+        <a href="#projects" class="button">View My Work</a>
+        <a href="#contact" class="button secondary">Contact Me</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+
+        <p class="subtext">
+          I'm a college student interested in web development,
+          programming, and building useful things with technology.
+          My current focus is HTML, CSS, and Python.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2>My Skills</h2>
+        <p class="subtext">Technologies I'm learning and using.</p>
+
+        <div class="skills">
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>Python Basics</span>
+          <span>VS Code</span>
+          <span>Responsive Design</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2>My Projects</h2>
+        <p class="subtext">
+          A few examples of what I can build.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Student Profile Website</h3>
+            <p>
+              A personal webpage to introduce a student,
+              display skills, and share contact information.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Small Business Website</h3>
+            <p>
+              A simple website concept for a local shop,
+              with business details and contact information.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Python Mini Project</h3>
+            <p>
+              A beginner Python program that solves a useful
+              everyday problem.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Presentation Design</h3>
+            <p>
+              A sample presentation designed to communicate
+              information clearly and professionally.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <h2>Let's Work Together</h2>
+
+          <p class="subtext">
+            Need a simple website or help with a presentation?
+            Feel free to contact me about your project.
+          </p>
+
+          <a
+            href="amansharmaup2020@gmail.com"
+            class="button"
+          >
+            Email Me
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        © <span id="year"></span> Aman sharma.
+        Built with HTML and CSS.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
